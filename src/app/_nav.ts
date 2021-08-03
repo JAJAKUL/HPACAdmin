@@ -19,7 +19,7 @@ export const navItems: INavData[] = [
 
       {
         name: 'Home Inspectors',
-        url: '/page-underconstruction',
+        url: '/inspectors-dashboard',
         icon: 'icon-people'
       },
       {

@@ -52,6 +52,7 @@ export const routes: Routes = [
       title: 'Forgot Page'
     }
   },
+  
   {
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule),
@@ -78,12 +79,18 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      {
-        path: 'admin-profile',
-        loadChildren: () => import('./admin-profile/admin-profile.module').then(m => m.AdminProfileModule),
-        data: {
-          title: 'Admin Profile'
-        }
+      // {
+      //   path: 'admin-profile',
+      //   loadChildren: () => import('./admin-profile/admin-profile.module').then(m => m.AdminProfileModule),
+      //   data: {
+      //     title: 'Admin Profile'
+      //   },
+        {
+          path: 'inspectors-dashboard',
+          loadChildren: () => import('./inspectors-dashboard/inspectors-dashboard.module').then(m => m.InspectorsDashboardModule),
+          data: {
+            title: 'Inspectors dashboard'
+          }
       },
       {
         path: 'manage-cms',
