@@ -99,7 +99,7 @@ export const navItems: INavData[] = [
 
       {
         name: 'About Us',
-        url: '/page-underconstruction',
+        url: '/about-us',
         icon: 'icon-speech'
       },
       {
@@ -109,12 +109,12 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Terms & Conditions',
-        url: '/page-underconstruction',
+        url: '/terms-condition',
         icon: 'icon-docs'
       },
       {
         name: 'Privacy Policy',
-        url: '/page-underconstruction',
+        url: '/privacy-policy',
         icon: 'icon-doc'
       }
     ]
