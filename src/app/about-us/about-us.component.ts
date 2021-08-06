@@ -37,6 +37,8 @@ export class AboutUsComponent implements OnInit {
         if (data.docs.length) {
           this.reqData = data.docs;
           this.getData =  this.reqData.find(x => x.content_type === 'about_us');
+
+//  this.getData.content = getData.content
         }
       },
       (err) => {
@@ -52,7 +54,7 @@ export class AboutUsComponent implements OnInit {
 
   updateContent() {
     var obj = {
-      content_type : this.getData.content_type,
+      content_type : 'about_us',
       content : this.getData.content
     }
     this.adminService.UpdateContent(obj).subscribe(

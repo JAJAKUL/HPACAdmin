@@ -1040,57 +1040,6 @@ GetStateCityListData(data:any): Observable<any> {
 /* end state cityservice */
 
 
-/* start Subscription service */
-AddSubscription(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/add-subscription`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-  }
-
-GetSubscriptionListData(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get-subscription-list`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-    map(res => {
-      return res;
-    }),
-    retry(1),
-    catchError(this.error)
-    );
-  }
-
-EditSubscription(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit-subscription`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-    }
-
-DeleteSubscription(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-subscription`;
-  return this.httpClient.post(API_URL, data,this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-  }
-
-
-/* end Subscription service */
 
 /* start Social media service */
 AddSocialMedia(data): Observable<any> {
@@ -1207,5 +1156,465 @@ DeleteMultipleSpecialities(data): Observable<any> {
 
 
 /* end Specialities service */
+
+/***************************
+ * Working on 05/08/2021 *
+ ***************************/
+
+/***************************
+ * Call Common Service APIs *
+ ***************************/
+
+ changeStatusAllUsers(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/status-active-inactive`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+/***************************
+ * End Common Service APIs *
+ ***************************/
+
+/***************************
+ * Call realtors user apis *
+ ***************************/
+
+RealtorsListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_realtors_list`;
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+AddRealtors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/register_realtors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+RealtorsDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_realtors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+EditRealtors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_realtors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteRealtors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-realtors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteMultipleRealtors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-realtors`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+/***************************
+ * end realtors user apis *
+ ***************************/
+
+/***************************
+ * Call Buyers user apis *
+ ***************************/
+
+BuyersListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_buyers_list`;
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+AddBuyers(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/register_buyers`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+BuyersDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_buyers`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+EditBuyers(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_buyers`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteBuyers(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-buyers`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteMultipleBuyers(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-buyers`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+/***************************
+ * end Buyers user apis *
+ ***************************/
+
+
+/*************************************
+ * Home Inspect Subscription APIs *
+ *************************************/
+
+AddHomeInspectSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add-homeinspect-subscription`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+GetHomeInspectSubscriptionListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-homeinspect-subscription-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditHomeInspectSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-homeinspect-subscription`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+DeleteHomeInspectSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-homeinspect-subscription`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+/*************************************
+ * End Home Inspect Subscription APIs *
+ *************************************/
+
+/*************************************
+ * Contractors Subscription APIs *
+ *************************************/
+
+AddContractorsSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add-contractors-subscription`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+GetContractorsSubscriptionListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-contractors-subscription-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditContractorsSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-contractors-subscription`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+DeleteContractorsSubscription(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-contractors-subscription`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+/*************************************
+ * End Contractors Subscription APIs *
+ *************************************/
+
+/***************************
+ * Call Contractors user apis *
+ ***************************/
+
+ ContractorsListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_contractors_list`;
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+AddContractors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/register_contractors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+ContractorsDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_contractors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+EditContractors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_contractors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteContractors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-contractors`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteMultipleContractors(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-contractors`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+/***************************
+ * end Contractors user apis *
+ ***************************/
+
+/***************************
+ * Call HomeInspect user apis *
+ ***************************/
+
+ HomeInspectListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_homeinspect_list`;
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+AddHomeInspect(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/register_homeinspect`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+HomeInspectDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_homeinspect`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+EditHomeInspect(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_homeinspect`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteHomeInspect(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-homeinspect`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteMultipleHomeInspect(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-homeinspect`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+/***************************
+ * end HomeInspect user apis *
+ ***************************/
 
 }

@@ -36,7 +36,8 @@ export class PrivacyPolicyComponent implements OnInit {
         console.log(data);
         if (data.docs.length) {
           this.reqData = data.docs;
-          this.getData =  this.reqData.find(x => x.content_type === 'privacy_policy');
+          var getData =  this.reqData.find(x => x.content_type === 'privacy_policy');
+          this.getData.content = getData.content
         }
       },
       (err) => {
@@ -52,7 +53,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   updateContent() {
     var obj = {
-      content_type : this.getData.content_type,
+      content_type : 'privacy_policy',
       content : this.getData.content
     }
     this.adminService.UpdateContent(obj).subscribe(

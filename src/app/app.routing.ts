@@ -52,7 +52,7 @@ export const routes: Routes = [
       title: 'Forgot Page'
     }
   },
-  
+
   {
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule),
@@ -79,12 +79,13 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      // {
-      //   path: 'admin-profile',
-      //   loadChildren: () => import('./admin-profile/admin-profile.module').then(m => m.AdminProfileModule),
-      //   data: {
-      //     title: 'Admin Profile'
-      //   },
+      {
+        path: 'admin-profile',
+        loadChildren: () => import('./admin-profile/admin-profile.module').then(m => m.AdminProfileModule),
+        data: {
+          title: 'Admin Profile'
+        }
+      },
         {
           path: 'inspectors-dashboard',
           loadChildren: () => import('./inspectors-dashboard/inspectors-dashboard.module').then(m => m.InspectorsDashboardModule),
@@ -147,6 +148,48 @@ export const routes: Routes = [
         loadChildren: () => import('./faq/faq.module').then(m => m.FaqModule),
         data: {
           title: 'Faq'
+        }
+      },
+      {
+        path: 'manage-realtors',
+        loadChildren: () => import('./layouts/manage-realtors/manage-realtors.module').then(m => m.ManageRealtorsModule),
+        data: {
+          title: 'Realtors'
+        }
+      },
+      {
+        path: 'manage-buyers',
+        loadChildren: () => import('./layouts/manage-buyers/manage-buyers.module').then(m => m.ManageBuyersModule),
+        data: {
+          title: 'Buyers'
+        }
+      },
+      {
+        path: 'home-inspect-subsciption',
+        loadChildren: () => import('./layouts/manage-homeinspect-subscription/manage-homeinspect-subscription.module').then(m => m.ManageHomeinspectSubscriptionModule),
+        data: {
+          title: 'Home Inspect Subscription'
+        }
+      },
+      {
+        path: 'contractor-subscription',
+        loadChildren: () => import('./layouts/manage-contractors-subscription/manage-contractors-subscription.module').then(m => m.ManageContractorsSubscriptionModule),
+        data: {
+          title: 'Contractor Subscription'
+        }
+      },
+      {
+        path: 'manage-contractor',
+        loadChildren: () => import('./layouts/manage-contractors/manage-contractors.module').then(m => m.ManageContractorsModule),
+        data: {
+          title: 'Contractor'
+        }
+      },
+      {
+        path: 'manage-home-inspector',
+        loadChildren: () => import('./layouts/manage-homeinspect/manage-homeinspect.module').then(m => m.ManageHomeinspectModule),
+        data: {
+          title: 'Home Inspectors'
         }
       },
 

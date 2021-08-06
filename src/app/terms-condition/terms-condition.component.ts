@@ -36,7 +36,8 @@ export class TermsConditionComponent implements OnInit {
         console.log(data);
         if (data.docs.length) {
           this.reqData = data.docs;
-          this.getData =  this.reqData.find(x => x.content_type === 'terms_and_conditions');
+          var getData =  this.reqData.find(x => x.content_type === 'terms_and_conditions');
+          this.getData.content = getData.content
         }
       },
       (err) => {
@@ -52,7 +53,7 @@ export class TermsConditionComponent implements OnInit {
 
   updateContent() {
     var obj = {
-      content_type : this.getData.content_type,
+      content_type : 'terms_and_conditions',
       content : this.getData.content
     }
     this.adminService.UpdateContent(obj).subscribe(

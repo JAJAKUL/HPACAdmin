@@ -54,7 +54,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InspectorsDashboardComponent } from './inspectors-dashboard/inspectors-dashboard.component';
 
-
 // end import material //
 @NgModule({
   imports: [
@@ -90,7 +89,7 @@ import { InspectorsDashboardComponent } from './inspectors-dashboard/inspectors-
     LoginComponent,
     RegisterComponent,
     UnderconstructionComponent,
-    InspectorsDashboardComponent
+    InspectorsDashboardComponent,
 
 
   ],

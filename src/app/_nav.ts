@@ -19,12 +19,12 @@ export const navItems: INavData[] = [
 
       {
         name: 'Home Inspectors',
-        url: '/inspectors-dashboard',
+        url: '/home-inspect-subsciption',
         icon: 'icon-people'
       },
       {
         name: 'Contractors',
-        url: '/page-underconstruction',
+        url: '/contractor-subscription',
         icon: 'icon-people'
       }
     ]
@@ -37,7 +37,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Realtors',
-    url: '/page-underconstruction',
+    url: '/manage-realtors',
     icon: 'icon-shield'
   },
   {
@@ -47,25 +47,16 @@ export const navItems: INavData[] = [
     children: [
 
       {
-        name: 'Free Trial',
-        url: '/page-underconstruction',
+        name: 'Manage Home Inspectors',
+        url: '/manage-home-inspector',
         icon: 'icon-briefcase'
       },
-      {
-        name: 'Subscribed',
-        url: '/page-underconstruction',
-        icon: 'icon-briefcase'
-      },
-      {
-        name: 'UnSubscribed',
-        url: '/page-underconstruction',
-        icon: 'icon-briefcase'
-      }
+
     ]
   },
   {
     name: 'Buyers',
-    url: '/page-underconstruction',
+    url: '/manage-buyers',
     icon: 'icon-people'
   },
   {
@@ -75,20 +66,11 @@ export const navItems: INavData[] = [
     children: [
 
       {
-        name: 'Free Trial',
-        url: '/page-underconstruction',
+        name: 'Manage Contractors',
+        url: '/manage-contractor',
         icon: 'icon-rocket'
       },
-      {
-        name: 'Subscribed',
-        url: '/page-underconstruction',
-        icon: 'icon-tag'
-      },
-      {
-        name: 'UnSubscribed',
-        url: '/page-underconstruction',
-        icon: 'icon-ban'
-      }
+
     ]
   },
   {

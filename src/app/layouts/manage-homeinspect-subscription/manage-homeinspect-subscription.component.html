@@ -1,0 +1,327 @@
+<div class="row">
+  <div class="col-lg-4">
+    <h2>Manage Home Inspect Subscription</h2>
+  </div>
+  <!-- <div class="col-lg-8 text-right">
+        <button class="btn btn-primary ntu" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add</button>
+    </div> -->
+</div>
+<section style="margin-bottom: 10px;" class="first-header d-flex align-items-center justify-content-between">
+  <div class="filter">
+    <!-- <p>Filter</p> -->
+    <!-- <mat-form-field>
+      <input class="for-ser"
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Search By Name"
+      />
+    </mat-form-field> -->
+  </div>
+  <div>
+    <a
+      class="btn btn-primary"
+      style="color: white"
+      data-toggle="modal"
+      data-target="#AddModal"
+    >
+      Add Subscription
+    </a>
+
+  </div>
+</section>
+<div class="table-responsive">
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  matSort
+  (matSortChange)="sortData($event)"
+  matSortActive="name"
+  matSortDirection="asc"
+>
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+  <!-- Position Column -->
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+
+  <!-- name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 140px;"> Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+  <!-- price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <!-- no_of_days Column -->
+  <ng-container matColumnDef="no_of_days">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Of Days</th>
+    <td mat-cell *matCellDef="let element">{{ element.no_of_days }}</td>
+  </ng-container>
+  <!-- no_of_service Column -->
+  <ng-container matColumnDef="no_of_service">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Of Service</th>
+    <td mat-cell *matCellDef="let element">{{ element.no_of_service }}</td>
+  </ng-container>
+  <!-- no_of_request Column -->
+  <ng-container matColumnDef="no_of_request">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Of Request</th>
+    <td mat-cell *matCellDef="let element">{{ element.no_of_request }}</td>
+  </ng-container>
+  <!-- subscription_type Column -->
+  <ng-container matColumnDef="subscription_type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Subscription Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.subscription_type }}</td>
+  </ng-container>
+  <!-- description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.isActive ? "Active" : "Inactive" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef class="mat-header-cell">Action</th>
+    <td class="mat-cell act_td" mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="changeStatus(element)" mat-menu-item>
+          <mat-icon><span class="material-icons">visibility</span></mat-icon>
+          <span>{{ element.isActive ? "Inactivate" : "Activate" }}</span>
+        </button>
+        <!-- <button  mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                </button> -->
+        <a
+          href="javascript:void(0)"
+          (click)="openEditModal(element)"
+          mat-menu-item
+        >
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </a>
+        <button (click)="deleteItem(element._id)" mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+</div>
+<mat-paginator
+  #paginator
+  [length]="length"
+  [pageSize]="10"
+  [pageSizeOptions]="[10, 20, 30, 50]"
+  (page)="onPageFired($event)"
+>
+</mat-paginator>
+
+
+<!-- The Modal -->
+<div class="modal" id="AddModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Subscription</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="example-form" [formGroup]="addForm">
+          <div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Subscription Name"
+                [(ngModel)]="getData.name"
+                [formControl]="addForm.controls['name']"
+              />
+              <p
+                style="color: #e80358"
+                *ngIf="
+                  !addForm.controls['name'].valid &&
+                  addForm.controls['name'].touched
+                "
+              >
+                This field is required.
+              </p>
+            </div>
+
+            <div class="form-group">
+            <label for="sel1">Select Subscription Type:</label>
+            <select class="form-control" placeholder="Type"  [(ngModel)] = "getData.subscription_type" [formControl]="addForm.controls['subscription_type']">
+              <option  disabled="" value="">Select One</option>
+              <option value="Free">Free</option>
+              <option value="Paid">Paid</option>
+            </select>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['subscription_type'].valid  && ( addForm.controls['subscription_type'].touched)">Invalid subscription type!!!</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter price" pattern="[0-9.]+" [(ngModel)]="getData.price" [formControl]="addForm.controls['price']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['price'].valid  && ( addForm.controls['price'].touched)">Invalid price!!!</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Service" pattern="[0-9.]+" [(ngModel)]="getData.no_of_service" [formControl]="addForm.controls['no_of_service']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['no_of_service'].valid  && ( addForm.controls['no_of_service'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Request" pattern="[0-9.]+" [(ngModel)]="getData.no_of_request" [formControl]="addForm.controls['no_of_request']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['no_of_request'].valid  && ( addForm.controls['no_of_request'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Days" pattern="[0-9.]+" [(ngModel)]="getData.no_of_days" [formControl]="addForm.controls['no_of_days']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['no_of_days'].valid  && ( addForm.controls['no_of_days'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Enter description" [(ngModel)]="getData.description" [formControl]="addForm.controls['description']"></textarea>
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!addForm.controls['description'].valid  && ( addForm.controls['description'].touched)">Invalid description!!!</p>
+          </div>
+        </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]="!addForm.valid"
+        (click)="addSubscription()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="EditModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Subscription</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="example-form" [formGroup]="editForm">
+          <div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Subscription Name"
+                [(ngModel)]="editData.name"
+                [formControl]="editForm.controls['name']"
+              />
+              <p
+                style="color: #e80358"
+                *ngIf="
+                  !editForm.controls['name'].valid &&
+                  editForm.controls['name'].touched
+                "
+              >
+                This field is required.
+              </p>
+            </div>
+
+            <div class="form-group">
+            <label for="sel1">Select Subscription Type:</label>
+            <select class="form-control" placeholder="Type"  [(ngModel)] = "editData.subscription_type" [formControl]="editForm.controls['subscription_type']">
+              <option  disabled="" value="">Select One</option>
+              <option value="Free">Free</option>
+              <option value="Paid">Paid</option>
+            </select>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['subscription_type'].valid  && ( editForm.controls['subscription_type'].touched)">Invalid subscription type!!!</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter price" pattern="[0-9.]+" [(ngModel)]="editData.price" [formControl]="editForm.controls['price']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['price'].valid  && ( editForm.controls['price'].touched)">Invalid price!!!</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Service" pattern="[0-9.]+" [(ngModel)]="editData.no_of_service" [formControl]="editForm.controls['no_of_service']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['no_of_service'].valid  && ( editForm.controls['no_of_service'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Request" pattern="[0-9.]+" [(ngModel)]="editData.no_of_request" [formControl]="editForm.controls['no_of_request']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['no_of_request'].valid  && ( editForm.controls['no_of_request'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Number Of Days" pattern="[0-9.]+" [(ngModel)]="editData.no_of_days" [formControl]="editForm.controls['no_of_days']">
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['no_of_days'].valid  && ( editForm.controls['no_of_days'].touched)">This field is required.</p>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Enter description" [(ngModel)]="editData.description" [formControl]="editForm.controls['description']"></textarea>
+            </mat-form-field>
+            <p style="color: #FF0000" *ngIf="!editForm.controls['description'].valid  && ( editForm.controls['description'].touched)">Invalid description!!!</p>
+          </div>
+        </div>
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]="!editForm.valid"
+        (click)="editSubscription()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
