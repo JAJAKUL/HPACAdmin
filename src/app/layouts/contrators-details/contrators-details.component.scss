@@ -1,0 +1,61 @@
+.contractors-details {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    margin-bottom: 30px;
+    float: left;
+    width: 100%;
+    
+    button.btn.btn-lg.btn-primary.Inactive {
+        position: absolute;
+        right: 15px;
+    }
+    .profile-img {
+        float: left;
+        width: 240px;
+        padding: 4px;
+        border: 1px solid;
+        img{
+            width:100%;
+        }
+    }
+    .profile-details {
+        h1{
+            font-weight: 600;
+        }
+        float: left;
+        width: calc(100% - 240px);
+        padding: 0px 20px;
+        p{
+            font-size: 16px;
+    margin-bottom: 8px;
+    span{
+        font-weight: 600;
+    }
+        }
+    }
+    .d-block.sub-details {
+        // background: #fff;
+        // box-shadow: 0px 0px 8px #ccc;
+        // padding: 20px;
+        &.sub-des {
+            padding: 16px;
+            box-shadow: 0px 0px 8px #ccc;
+        }
+        margin: 20px 0px;
+        h2 {
+            margin-bottom: 0px !important;
+            line-height: 24px !important;
+            font-weight: 600;
+            
+        }
+        h3{
+            font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 20px;
+            small{
+                color: #f00;
+            }
+        }
+    }
+}
