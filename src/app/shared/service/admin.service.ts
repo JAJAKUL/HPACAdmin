@@ -1617,4 +1617,74 @@ DeleteMultipleHomeInspect(data): Observable<any> {
  * end HomeInspect user apis *
  ***************************/
 
+/***************************
+ * Call Service apis *
+ ***************************/
+
+ ServiceListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_service_list`;
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+AddService(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add_service`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+
+EditService(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_service`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteService(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-service`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+DeleteMultipleService(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-service`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+/***************************
+ * end HomeInspect user apis *
+ ***************************/
+
 }

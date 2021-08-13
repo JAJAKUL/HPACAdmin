@@ -52,7 +52,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { InspectorsDashboardComponent } from './inspectors-dashboard/inspectors-dashboard.component';
 
 // end import material //
 @NgModule({
@@ -89,7 +88,7 @@ import { InspectorsDashboardComponent } from './inspectors-dashboard/inspectors-
     LoginComponent,
     RegisterComponent,
     UnderconstructionComponent,
-    InspectorsDashboardComponent,
+
 
 
   ],

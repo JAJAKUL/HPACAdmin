@@ -82,6 +82,9 @@ export class ManageContractorsComponent implements OnInit {
     this.getData = {};
     this.getAllDataList();
   }
+  userDetails(_id){
+    console.log('_id========================', _id)
+  }
 
   onRegistration() {
     const formData = new FormData();

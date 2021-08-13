@@ -7,6 +7,7 @@ export const environment = {
   baseImageBuyersProfile: 'https://nodeserver.mydevfactory.com:3305/buyersProfile/',
   baseImageHomeInspectorProfile: 'https://nodeserver.mydevfactory.com:3305/homeInspectorsProfile/',
   baseImageContractorsProfile: 'https://nodeserver.mydevfactory.com:3305/contractorsProfile/',
+  baseImageServiceIcon: 'https://nodeserver.mydevfactory.com:3305/serviceIcon/',
   baseImageMenus: 'https://nodeserver.mydevfactory.com:3305/menus/',
   baseImageCity: 'https://nodeserver.mydevfactory.com:3305/city/',
   baseImageRestaurant: 'https://nodeserver.mydevfactory.com:3305/restaurant/',

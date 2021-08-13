@@ -186,10 +186,24 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'details-contractor/:id',
+        loadChildren: () => import('./layouts/contrators-details/contrators-details.module').then(m => m.ContratorsDetailsModule),
+        data: {
+          title: 'Details Contractor'
+        }
+      },
+      {
         path: 'manage-home-inspector',
         loadChildren: () => import('./layouts/manage-homeinspect/manage-homeinspect.module').then(m => m.ManageHomeinspectModule),
         data: {
           title: 'Home Inspectors'
+        }
+      },
+      {
+        path: 'manage-service',
+        loadChildren: () => import('./layouts/manage-service/manage-service.module').then(m => m.ManageServiceModule),
+        data: {
+          title: 'Service'
         }
       },
 

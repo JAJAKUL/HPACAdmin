@@ -1,0 +1,303 @@
+<div class="row">
+    <div class="col-lg-4">
+      <h2>Manage Service</h2>
+    </div>
+    <!-- <div class="col-lg-8 text-right">
+          <button class="btn btn-primary ntu" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add</button>
+      </div> -->
+  </div>
+  <section class="first-header d-flex align-items-center justify-content-between">
+    <div class="filter">
+      <!-- <p>Filter</p> -->
+      <mat-form-field>
+        <input class="for-ser"
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Search By Name"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- <button class="btn btn-primary ntu" ><i class="fa fa-plus"></i>&nbsp;&nbsp; Add </button> -->
+      <a
+        class="btn btn-primary"
+        style="color: white"
+        data-toggle="modal"
+        data-target="#AddModal"
+      >
+        <!-- <mat-icon>add_user</mat-icon> -->
+        Add Service
+      </a>
+      <!-- <button class="btn btn-primary" (click)="multiActive()">Mark As Active</button>
+          <button class="btn btn-primary" (click)="multiInactive()">Mark As Inactive</button> -->
+      <button class="btn btn-primary" (click)="multiDelete()">
+        Mutiple Delete
+      </button>
+    </div>
+  </section>
+  <div class="table-responsive">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    matSort
+    (matSortChange)="sortData($event)"
+    matSortActive="header"
+    matSortDirection="asc"
+  >
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()"
+        >
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(row._id) : null"
+          [checked]="selection.isSelected(row._id)"
+          [aria-label]="checkboxLabel(row._id)"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+    <!-- image Column -->
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 140px;">Profile Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img
+          src="{{ profileImageUrl }}{{ element.icon }}"
+          style="height: 80px; width: 100px; background-color: #eae1e1;"
+        />
+      </td>
+    </ng-container>
+    <!-- header Column -->
+    <ng-container matColumnDef="header">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 140px;"> Heading Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.header }}</td>
+    </ng-container>
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.isActive ? "Active" : "Inactive" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="mat-header-cell">Action</th>
+      <td class="mat-cell act_td" mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="changeStatus(element)" mat-menu-item>
+            <mat-icon><span class="material-icons">visibility</span></mat-icon>
+            <span>{{ element.isActive ? "Inactivate" : "Activate" }}</span>
+          </button>
+          <!-- <button  mat-menu-item>
+                      <mat-icon>edit</mat-icon>
+                      <span>Edit</span>
+                  </button> -->
+          <a
+            href="javascript:void(0)"
+            (click)="openEditModal(element)"
+            mat-menu-item
+          >
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </a>
+          <button (click)="deleteItem(element._id)" mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  </div>
+  <mat-paginator
+    #paginator
+    [length]="length"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 30, 50]"
+    (page)="onPageFired($event)"
+  >
+  </mat-paginator>
+
+  <!-- The Modal -->
+  <div class="modal" id="AddModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Service</h4>
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup]="addForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Service Heading Name"
+                [(ngModel)]="getData.header"
+                [formControl]="addForm.controls['header']"
+              />
+              <p
+                style="color: #e80358"
+                *ngIf="
+                  !addForm.controls['header'].valid &&
+                  addForm.controls['header'].touched
+                "
+              >
+                This field is required.
+              </p>
+            </div>
+
+            <div>
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Enter description" [(ngModel)]="getData.description" [formControl]="addForm.controls['description']"></textarea>
+              </mat-form-field>
+              <p style="color: #FF0000" *ngIf="!addForm.controls['description'].valid  && ( addForm.controls['description'].touched)">Invalid description!!!</p>
+            </div>
+
+
+
+            <div class="form-group">
+              <p>Upload icon</p>
+              <input
+                type="file"
+                class="form-control"
+                (change)="readURL($event)"
+                placeholder="Service Profile Image"
+              />
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            data-dismiss="modal"
+            [disabled]="!addForm.valid"
+            (click)="onRegistration()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="EditModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Service</h4>
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup]="editForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Service Header Name"
+                [(ngModel)]="editData.header"
+                [formControl]="editForm.controls['header']"
+              />
+              <p
+                style="color: #e80358"
+                *ngIf="
+                  !editForm.controls['header'].valid &&
+                  editForm.controls['header'].touched
+                "
+              >
+                This field is required.
+              </p>
+            </div>
+            <div>
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Enter description" [(ngModel)]="editData.description" [formControl]="editForm.controls['description']"></textarea>
+              </mat-form-field>
+              <p style="color: #FF0000" *ngIf="!editForm.controls['description'].valid  && ( editForm.controls['description'].touched)">Invalid description!!!</p>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+              <p>Upload icon</p>
+              <input
+                type="file"
+                class="form-control"
+                (change)="readURL($event)"
+                placeholder="Service Image"
+              />
+              <p *ngIf="!logo">{{editData?.icon ? editData?.icon : ''}}</p>
+            </div>
+
+
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            data-dismiss="modal"
+            [disabled]="!editForm.valid"
+            (click)="onEditProfile()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

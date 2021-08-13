@@ -26,6 +26,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
     "no_of_days",
     "no_of_service",
     "no_of_request",
+    "zipCode",
     "subscription_type",
     "description",
     "status",
@@ -59,6 +60,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
       subscription_type: [null, Validators.compose([Validators.required])],
       no_of_service: [null, Validators.compose([Validators.required])],
       no_of_request: [null, Validators.compose([Validators.required])],
+      zipCode: [null, Validators.compose([Validators.required])],
       price: [null, Validators.compose([Validators.required])],
       no_of_days: [null, Validators.compose([Validators.required])],
       description: [null, Validators.compose([Validators.required])],
@@ -68,6 +70,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
       subscription_type: [null, Validators.compose([Validators.required])],
       no_of_service: [null, Validators.compose([Validators.required])],
       no_of_request: [null, Validators.compose([Validators.required])],
+      zipCode: [null, Validators.compose([Validators.required])],
       price: [null, Validators.compose([Validators.required])],
       no_of_days: [null, Validators.compose([Validators.required])],
       description: [null, Validators.compose([Validators.required])],
@@ -94,6 +97,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
       no_of_request: this.getData.no_of_request,
       no_of_days: this.getData.no_of_days,
       description: this.getData.description,
+      zipCode: this.getData.zipCode,
     };
     console.log('reqbody==================', this.reqData)
 
@@ -136,6 +140,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
       no_of_request: this.editData.no_of_request,
       no_of_days: this.editData.no_of_days,
       description: this.editData.description,
+      zipCode: this.editData.zipCode,
       subs_id: this.editData._id,
     };
       console.log('reqbody==================', obj)
@@ -273,7 +278,7 @@ export class ManageContractorsSubscriptionComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           const obj = {
-            realtors_id: id,
+            subs_id: id,
           };
           this.adminService.DeleteContractorsSubscription(obj).subscribe(
             (data) => {

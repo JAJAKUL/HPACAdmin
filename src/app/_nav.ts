@@ -32,7 +32,7 @@ export const navItems: INavData[] = [
 
   {
     name: 'Manage Services',
-    url: '/page-underconstruction',
+    url: '/manage-service',
     icon: 'icon-wrench'
   },
   {
@@ -42,17 +42,8 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Home Inspectors',
-    url: '/pages',
+    url: '/manage-home-inspector',
     icon: 'icon-home',
-    children: [
-
-      {
-        name: 'Manage Home Inspectors',
-        url: '/manage-home-inspector',
-        icon: 'icon-briefcase'
-      },
-
-    ]
   },
   {
     name: 'Buyers',
@@ -61,17 +52,9 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Contractors',
-    url: '/pages',
+    url: '/manage-contractor',
     icon: 'icon-people',
-    children: [
 
-      {
-        name: 'Manage Contractors',
-        url: '/manage-contractor',
-        icon: 'icon-rocket'
-      },
-
-    ]
   },
   {
     name: 'CMS ',
