@@ -1472,6 +1472,20 @@ DeleteContractorsSubscription(data): Observable<any> {
       );
 }
 
+ContractorsDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_contractors_details`;
+  console.log(data)
+  console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
 AddContractors(data): Observable<any> {
   const API_URL = `${this.apiUrl}/register_contractors`;
   return this.httpClient.post(API_URL, data, this.headerToken())
@@ -1484,17 +1498,7 @@ AddContractors(data): Observable<any> {
       );
 }
 
-ContractorsDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_contractors`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
+
 
 EditContractors(data): Observable<any> {
   const API_URL = `${this.apiUrl}/edit_contractors`;
@@ -1553,6 +1557,7 @@ DeleteMultipleContractors(data): Observable<any> {
       );
 }
 
+
 AddHomeInspect(data): Observable<any> {
   const API_URL = `${this.apiUrl}/register_homeinspect`;
   return this.httpClient.post(API_URL, data, this.headerToken())
@@ -1566,7 +1571,7 @@ AddHomeInspect(data): Observable<any> {
 }
 
 HomeInspectDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_homeinspect`;
+  const API_URL = `${this.apiUrl}/get_homeinspect_details`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {

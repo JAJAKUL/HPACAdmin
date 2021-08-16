@@ -200,6 +200,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'details-home-inspector/:id',
+        loadChildren: () => import('./layouts/home-inspector-details/home-inspector-details.module').then(m => m.HomeInspectorDetailsModule),
+        data: {
+          title: 'Home Inspectors Details'
+        }
+      },
+      {
         path: 'manage-service',
         loadChildren: () => import('./layouts/manage-service/manage-service.module').then(m => m.ManageServiceModule),
         data: {

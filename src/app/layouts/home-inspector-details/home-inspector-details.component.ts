@@ -14,11 +14,11 @@ declare var $;
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-contrators-details',
-  templateUrl: './contrators-details.component.html',
-  styleUrls: ['./contrators-details.component.scss']
+  selector: 'app-home-inspector-details',
+  templateUrl: './home-inspector-details.component.html',
+  styleUrls: ['./home-inspector-details.component.scss']
 })
-export class ContratorsDetailsComponent implements OnInit {
+export class HomeInspectorDetailsComponent implements OnInit {
 
   displayedColumns: string[] = [
     "select",
@@ -59,7 +59,7 @@ export class ContratorsDetailsComponent implements OnInit {
     private toastr: ToastrService
   ) {
 
-    this.profileImageUrl = `${environment.baseImageContractorsProfile}`;
+    this.profileImageUrl = `${environment.baseImageHomeInspectorProfile}`;
 
 
   }
@@ -79,9 +79,9 @@ export class ContratorsDetailsComponent implements OnInit {
   GetDataDetailsData(obj) {
     console.log('obj===================',obj)
     var ob= {
-      contractors_id : obj
+      home_id : obj
     }
-    this.adminService.ContractorsDetails(ob).subscribe(
+    this.adminService.HomeInspectDetails(ob).subscribe(
       (data) => {
         console.log(data);
         if (data.code === 200) {
@@ -117,7 +117,7 @@ export class ContratorsDetailsComponent implements OnInit {
     let obj = {
       _id: data._id,
       isActive: status,
-      schemaName: 'contractors',
+      schemaName: 'homeinspector',
     };
       console.log('reqbody==================', obj)
 

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContratorsDetailsComponent } from './contrators-details.component';
-import { ContratorsDetailsRoutingModule } from './contrators-details-routing.module';
+import { HomeInspectorDetailsComponent } from './home-inspector-details.component';
+
+import { HomeInspectorDetailsRoutingModule } from './home-inspector-details-routing.module';
+
 
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,10 +18,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [ContratorsDetailsComponent],
+  declarations: [HomeInspectorDetailsComponent],
   imports: [
     CommonModule,
-    ContratorsDetailsRoutingModule,
+    HomeInspectorDetailsRoutingModule,
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
@@ -34,4 +36,4 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMenuModule
   ]
 })
-export class ContratorsDetailsModule { }
+export class HomeInspectorDetailsModule { }
