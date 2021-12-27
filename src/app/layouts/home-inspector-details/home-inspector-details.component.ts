@@ -59,7 +59,7 @@ export class HomeInspectorDetailsComponent implements OnInit {
     private toastr: ToastrService
   ) {
 
-    this.profileImageUrl = `${environment.baseImageHomeInspectorProfile}`;
+    this.profileImageUrl = `${environment.baseImageUserProfile}`;
 
 
   }
@@ -79,7 +79,7 @@ export class HomeInspectorDetailsComponent implements OnInit {
   GetDataDetailsData(obj) {
     console.log('obj===================',obj)
     var ob= {
-      home_id : obj
+      user_id : obj
     }
     this.adminService.HomeInspectDetails(ob).subscribe(
       (data) => {
@@ -117,7 +117,7 @@ export class HomeInspectorDetailsComponent implements OnInit {
     let obj = {
       _id: data._id,
       isActive: status,
-      schemaName: 'homeinspector',
+      schemaName: 'user',
     };
       console.log('reqbody==================', obj)
 

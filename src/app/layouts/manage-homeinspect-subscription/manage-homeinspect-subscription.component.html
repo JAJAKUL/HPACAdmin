@@ -111,10 +111,10 @@
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </a>
-        <button (click)="deleteItem(element._id)" mat-menu-item>
+        <!-- <button (click)="deleteItem(element._id)" mat-menu-item>
           <mat-icon>delete</mat-icon>
           <span>Delete</span>
-        </button>
+        </button> -->
       </mat-menu>
     </td>
   </ng-container>
@@ -249,13 +249,15 @@
             </div>
 
             <div class="form-group">
-            <label for="sel1">Select Subscription Type:</label>
-            <select class="form-control" placeholder="Type"  [(ngModel)] = "editData.subscription_type" [formControl]="editForm.controls['subscription_type']">
-              <option  disabled="" value="">Select One</option>
+            <!-- <label for="sel1">Subscription Type</label> -->
+            <label for="sel1">Subscription Type: <b>{{editData.subscription_type}}</b></label>
+            <!-- <input matInput placeholder="Subscription Type" readonly [(ngModel)]="editData.subscription_type" [formControl]="editForm.controls['subscription_type']"> -->
+            <!-- <select class="form-control" placeholder="Type"  [(ngModel)] = "editData.subscription_type" [formControl]="editForm.controls['subscription_type']">
+              <option  disabled="" value="">{{editData.subscription_type}}</option>
               <option value="Free">Free</option>
               <option value="Paid">Paid</option>
-            </select>
-            <p style="color: #FF0000" *ngIf="!editForm.controls['subscription_type'].valid  && ( editForm.controls['subscription_type'].touched)">Invalid subscription type!!!</p>
+            </select> -->
+            <!-- <p style="color: #FF0000" *ngIf="!editForm.controls['subscription_type'].valid  && ( editForm.controls['subscription_type'].touched)">Invalid subscription type!!!</p> -->
           </div>
           <div>
             <mat-form-field class="example-full-width">

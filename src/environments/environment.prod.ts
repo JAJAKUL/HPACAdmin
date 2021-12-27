@@ -3,7 +3,7 @@ export const environment = {
   // endPoint: 'http://localhost:3305/adminRouter',
   endPoint: 'https://nodeserver.mydevfactory.com:3305/adminRouter',
   baseImageAdminProfile: 'https://nodeserver.mydevfactory.com:3305/adminProfile/',
-  baseImageRealtorsProfile: 'https://nodeserver.mydevfactory.com:3305/realtorsProfile/',
+  baseImageUserProfile: 'https://nodeserver.mydevfactory.com:3305/userProfile/',
   baseImageBuyersProfile: 'https://nodeserver.mydevfactory.com:3305/buyersProfile/',
   baseImageHomeInspectorProfile: 'https://nodeserver.mydevfactory.com:3305/homeInspectorsProfile/',
   baseImageContractorsProfile: 'https://nodeserver.mydevfactory.com:3305/contractorsProfile/',

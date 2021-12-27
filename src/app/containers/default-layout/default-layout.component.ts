@@ -48,6 +48,11 @@ export class DefaultLayoutComponent implements OnInit {
         } else {
             console.log('Internet Connection Error');
         }
+        if(err.status === 401){
+          localStorage.clear();
+          this.router.navigate(['/login']);
+
+        }
 
     });
     }

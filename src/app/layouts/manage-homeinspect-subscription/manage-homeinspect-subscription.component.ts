@@ -61,7 +61,7 @@ export class ManageHomeinspectSubscriptionComponent implements OnInit {
     });
     this.editForm = formBuilder.group({
       name: [null, Validators.compose([Validators.required])],
-      subscription_type: [null, Validators.compose([Validators.required])],
+      // subscription_type: [null, Validators.compose([Validators.required])],
       price: [null, Validators.compose([Validators.required])],
       no_of_days: [null, Validators.compose([Validators.required])],
       description: [null, Validators.compose([Validators.required])],
@@ -267,7 +267,7 @@ export class ManageHomeinspectSubscriptionComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           const obj = {
-            realtors_id: id,
+            subs_id: id,
           };
           this.adminService.DeleteHomeInspectSubscription(obj).subscribe(
             (data) => {

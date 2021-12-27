@@ -51,6 +51,8 @@ export class ContratorsDetailsComponent implements OnInit {
   logo
   lat = '40.7604062';
   lng = '73.992990';
+  getDataService
+  baseImageServiceIcon
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -59,7 +61,8 @@ export class ContratorsDetailsComponent implements OnInit {
     private toastr: ToastrService
   ) {
 
-    this.profileImageUrl = `${environment.baseImageContractorsProfile}`;
+    this.profileImageUrl = `${environment.baseImageUserProfile}`;
+    this.baseImageServiceIcon = `${environment.baseImageServiceIcon}`;
 
 
   }
@@ -68,18 +71,20 @@ export class ContratorsDetailsComponent implements OnInit {
     // this.editData = {}
     this.dataSource = [];
     this.reqData = {};
+    this.getDataService = {};
     // this.getData = {};
     this.route.paramMap.subscribe(params => {
       let obj = params.get("id")
 
       this.GetDataDetailsData(obj)
+      this.GetContractorServiceData(obj)
     })
   }
 
   GetDataDetailsData(obj) {
     console.log('obj===================',obj)
     var ob= {
-      contractors_id : obj
+      user_id : obj
     }
     this.adminService.ContractorsDetails(ob).subscribe(
       (data) => {
@@ -88,10 +93,32 @@ export class ContratorsDetailsComponent implements OnInit {
           this.getData = data.response_data;
           console.log('getData=================', this.getData)
 
-          // this.reqData = JSON.stringify(data.response_data.data);
-          // this.userListing = JSON.parse(this.reqData);
-          // console.log("reqData", this.userListing);
-          // this.dataSource = this.userListing;
+        }
+      },
+      (err) => {
+        console.log(err);
+        if (err.status === 404) {
+          this.dataSource = [];
+          console.log("Some error occured");
+          // this.toastr.error("Some error occured, please try again!!", "Error");
+          console.log("Internet Connection Error");
+        }
+      }
+    );
+  }
+
+  GetContractorServiceData(obj) {
+    console.log('obj===================',obj)
+    var ob= {
+      user_id : obj
+    }
+    this.adminService.ContractorsServiceDetails(ob).subscribe(
+      (data) => {
+        console.log(data);
+        if (data.code === 200) {
+          this.getDataService = data.response_data;
+          console.log('getDataService=================', this.getDataService)
+
         }
       },
       (err) => {
@@ -117,7 +144,7 @@ export class ContratorsDetailsComponent implements OnInit {
     let obj = {
       _id: data._id,
       isActive: status,
-      schemaName: 'contractors',
+      schemaName: 'user',
     };
       console.log('reqbody==================', obj)
 

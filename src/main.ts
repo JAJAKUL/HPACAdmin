@@ -6,6 +6,9 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+  if(window){
+    window.console.log=function(){};  //Angular – Clear All of Your Console Logs in Production Build with Just a Few Lines of Code
+  }
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule, {

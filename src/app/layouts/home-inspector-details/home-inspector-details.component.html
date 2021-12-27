@@ -1,16 +1,14 @@
 <div class="row">
   <div class="col-lg-4">
-    <h2>Contractors Details</h2>
+    <h2>Home Inspector Details</h2>
   </div>
 </div>
 <div class="row mt-4">
   <div class="col-md-12">
       <div class="contractors-details">
-          <div class="profile-img" *ngIf="!getData?.profileImage">
-              <img   src="./assets/img/no-thumbnail.png" alt="">
-          </div>
-          <div class="profile-img" *ngIf="getData?.profileImage">
-            <img  src="{{ profileImageUrl }}{{ getData?.profileImage }}" alt="">
+
+          <div class="profile-img" >
+            <img  src="{{ getData?.profileImage ? profileImageUrl + getData?.profileImage :'./assets/img/no-thumbnail.png'}}" alt="">
 
           </div>
           <div class="profile-details">
@@ -22,17 +20,22 @@
               <!-- <p><span>Service: -</span> Painting, Roofing, Home Security,  System, Electrician</p> -->
               <div class="d-block sub-details">
                 <h2>Subscription Details</h2>
-              <h2 class="text-right">Subscription Status :  {{getData?.subscription ? 'Actived' : 'Inactivated'}}</h2>
+              <h2 class="text-right">Subscription Status :  {{getData?.subscriptionId ? 'Actived' : 'Inactivated'}}</h2>
               </div>
 
-              <div class="d-block sub-details sub-des" *ngIf="getData?.subscription">
+              <div class="d-block sub-details sub-des" *ngIf="getData?.subscriptionId">
 
-                  <h3>{{getData?.subscription?.name}}<br><small> Subscription expired on {{getData?.subscription?.expiry_date | date:'mediumDate'}}</small></h3>
+                  <h3>{{getData?.subscriptionId?.name}}<br> Subscription expired on : <small>{{getData?.subscriptionId?.expiryDate | date:'mediumDate'}}</small></h3>
                   <p><strong>
-                      Subscription Type - {{getData?.subscription?.subscription_type}}
+                      Subscription Type - {{getData?.subscriptionId?.subscription_type}}
                   </strong></p>
-                  <p>Number of service - {{getData?.subscription?.no_of_service}}, Number of leads received - {{getData?.subscription?.no_of_request}}, Number of Days - {{getData?.subscription?.no_of_days}}</p>
-                  <p>Number of zip code - {{getData?.subscription?.zipCode}}</p>
+                  <p><strong>
+                      Subscription Price - {{getData?.subscriptionId?.price}}
+                  </strong></p>
+                  <p><strong>
+                    Number of Days - {{getData?.subscriptionId?.no_of_days}}
+                  </strong></p>
+
               </div>
           </div>
       </div>

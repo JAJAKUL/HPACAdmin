@@ -33,8 +33,8 @@ export class ManageHomeinspectComponent implements OnInit {
   dataSource;
   offset = 0;
   limit = 10;
-  sortby = "name";
-  direction = "asc";
+  sortby = "createdAt";
+  direction = "desc";
   userListing;
   length;
   reqData;
@@ -70,7 +70,7 @@ export class ManageHomeinspectComponent implements OnInit {
       phone: [null, Validators.compose([Validators.required])],
       zipCode: [null, Validators.compose([Validators.required])],
     });
-    this.profileImageUrl = `${environment.baseImageHomeInspectorProfile}`;
+    this.profileImageUrl = `${environment.baseImageUserProfile}`;
 
 
   }
@@ -93,10 +93,11 @@ export class ManageHomeinspectComponent implements OnInit {
     formData.append('phone', this.getData.phone);
     formData.append('zipCode', this.getData.zipCode);
     formData.append('password', this.getData.password);
+    formData.append('user_type', 'home_inspectors');
     // formData.append('lat', this.lat);
     // formData.append('lng', this.lng);
 
-    this.adminService.AddHomeInspect(formData).subscribe(
+    this.adminService.AddUser(formData).subscribe(
       (data) => {
         console.log(data);
         if (data.code === 201) {
@@ -138,7 +139,7 @@ async  openEditModal(data){
     if(this.logo){
       formData.append('profileImage', this.logo);
     }
-    formData.append('buyers_id', this.editData._id);
+    formData.append('user_id', this.editData._id);
     formData.append('name', this.editData.name);
     formData.append('phone', this.editData.phone);
     formData.append('zipCode', this.editData.zipCode);
@@ -149,7 +150,7 @@ async  openEditModal(data){
     // formData.append('lng', this.lng);
 
 
-    this.adminService.EditHomeInspect(formData).subscribe(
+    this.adminService.EditUser(formData).subscribe(
       (data) => {
         console.log(data);
         if (data.code === 200) {
@@ -204,6 +205,7 @@ async  openEditModal(data){
       sortby: this.sortby,
       direction: this.direction,
       search: value,
+      user_type: 'home_inspectors',
     };
     this.search = value;
     this.GetDataList(obj);
@@ -218,6 +220,7 @@ async  openEditModal(data){
       sortby: event.active,
       direction: event.direction,
       search: this.search,
+      user_type: 'home_inspectors',
     };
     this.sortby = event.active;
     this.direction = event.direction;
@@ -231,6 +234,7 @@ async  openEditModal(data){
       sortby: this.sortby,
       direction: this.direction,
       search: this.search,
+      user_type: 'home_inspectors',
     };
     this.offset = event.pageIndex * event.pageSize;
     this.limit = event.pageSize;
@@ -244,13 +248,14 @@ async  openEditModal(data){
       sortby: this.sortby,
       direction: this.direction,
       search: this.search,
+      user_type: 'home_inspectors',
     };
     this.GetDataList(obj);
   }
 
   GetDataList(obj) {
     console.log('obj===================',obj)
-    this.adminService.HomeInspectListData(obj).subscribe(
+    this.adminService.UserListData(obj).subscribe(
       (data) => {
         console.log(data);
         if (data.code === 200) {
@@ -286,9 +291,9 @@ async  openEditModal(data){
       .then((result) => {
         if (result.value) {
           const obj = {
-            home_id: id,
+            user_id: id,
           };
-          this.adminService.DeleteHomeInspect(obj).subscribe(
+          this.adminService.DeleteUser(obj).subscribe(
             (data) => {
               console.log(data);
               if (data.code === 200) {
@@ -323,7 +328,7 @@ async  openEditModal(data){
     let obj = {
       _id: data._id,
       isActive: status,
-      schemaName: 'homeinspector',
+      schemaName: 'user',
     };
       console.log('reqbody==================', obj)
 
@@ -365,9 +370,9 @@ async  openEditModal(data){
         .then((result) => {
           if (result.value) {
             const obj = {
-              home_id_arr: this.selection.selected,
+              user_id_arr: this.selection.selected,
             };
-            this.adminService.DeleteMultipleHomeInspect(obj).subscribe(
+            this.adminService.DeleteMultipleUser(obj).subscribe(
               (data) => {
                 console.log(data);
                 if (data.code === 200) {

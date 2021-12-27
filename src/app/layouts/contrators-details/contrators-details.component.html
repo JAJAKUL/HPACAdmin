@@ -6,11 +6,9 @@
 <div class="row mt-4">
     <div class="col-md-12">
         <div class="contractors-details">
-            <div class="profile-img" *ngIf="!getData?.profileImage">
-                <img   src="./assets/img/no-thumbnail.png" alt="">
-            </div>
-            <div class="profile-img" *ngIf="getData?.profileImage">
-              <img  src="{{ profileImageUrl }}{{ getData?.profileImage }}" alt="">
+
+            <div class="profile-img" >
+              <img  src="{{ getData?.profileImage ? profileImageUrl + getData?.profileImage :'./assets/img/no-thumbnail.png' }}" alt="">
 
             </div>
             <div class="profile-details">
@@ -18,28 +16,33 @@
                 <h1>{{getData?.name}}</h1>
                 <p><span>Email: -</span> {{getData?.email}}</p>
                 <p><span>Mobile: -</span> {{getData?.phone}}</p>
-                <p><span>Pin: -</span> {{getData?.zipCode}}</p>
-                <p><span>Service: -</span> Painting, Roofing, Home Security,  System, Electrician</p>
+                <p><span>Zip Code: -</span> {{getData?.zipCode}}</p>
+
                 <div class="d-block sub-details">
                   <h2>Subscription Details</h2>
-                <h2 class="text-right">Subscription Status :  {{getData?.subscription ? 'Actived' : 'Inactivated'}}</h2>
+                <h2 class="text-right">Subscription Status :  {{getData?.subscriptionId ? 'Actived' : 'Inactivated'}}</h2>
                 </div>
 
-                <div class="d-block sub-details sub-des" *ngIf="getData?.subscription">
+                <div class="d-block sub-details sub-des" *ngIf="getData?.subscriptionId">
 
-                    <h3>{{getData?.subscription?.name}}<br><small> Subscription expired on {{getData?.subscription?.expiry_date | date:'mediumDate'}}</small></h3>
+                    <h3>{{getData?.subscriptionId?.name}}<br> Subscription expired on : <small>{{getData?.subscriptionId?.expiryDate | date:'mediumDate'}}</small></h3>
                     <p><strong>
-                        Subscription Type - {{getData?.subscription?.subscription_type}}
+                        Subscription Type - {{getData?.subscriptionId?.subscription_type}}
                     </strong></p>
-                    <p>Number of service - {{getData?.subscription?.no_of_service}}, Number of leads received - {{getData?.subscription?.no_of_request}}, Number of Days - {{getData?.subscription?.no_of_days}}</p>
-                    <p>Number of zip code - {{getData?.subscription?.zipCode}}</p>
+                    <p><strong>
+                        Subscription Price - {{getData?.subscriptionId?.price}}
+                    </strong></p>
+                    <p>Number of service - {{getData?.subscriptionId?.no_of_service}},
+                      Number of leads received - {{getData?.subscriptionId?.no_of_request}},
+                      Number of Days - {{getData?.subscriptionId?.no_of_days}}</p>
+                    <p>Number of zip code - {{getData?.subscriptionId?.zipCode}}</p>
                 </div>
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="Service-tab" data-toggle="pill" href="#Service" role="tab" aria-controls="Service" aria-selected="true">Service</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="Pincode-tab" data-toggle="pill" href="#Pincode" role="tab" aria-controls="Pincode" aria-selected="false">Pin Code </a>
+                    <a class="nav-link" id="Pincode-tab" data-toggle="pill" href="#Pincode" role="tab" aria-controls="Pincode" aria-selected="false">Zip Code </a>
                   </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -52,18 +55,18 @@
                             <th scope="col">Image</th>
                             <th scope="col" class="ser-tit">Services</th>
                             <th scope="col">Description</th>
-                            <th scope="col"> Status</th>
+                            <!-- <th scope="col"> Status</th> -->
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td scope="col"><img   src="https://nodeserver.mydevfactory.com:3305/serviceIcon/1628254018863ser2.png" alt=""> </td>
-                            <td colspan="">Fence Repair</td>
-                            <td colspan="">Fence Repair For each space we design, each technology item we carry, every meal we prepare, and every line item</td>
-                            <td><span class="Active">Active</span></td>
+                          <tr *ngFor="let item of getDataService?.service_name; let i=index">
+                            <th scope="row">{{i+1}}</th>
+                            <td scope="col"><img   src="{{item?.icon ? baseImageServiceIcon + item?.icon : './assets/img/no-thumbnail.png'}}" alt=""> </td>
+                            <td colspan="">{{item?.header}}</td>
+                            <td colspan="">{{item?.description}}</td>
+                            <!-- <td><span class="Active">Active</span></td> -->
                           </tr>
-                          <tr>
+                          <!-- <tr>
                             <th scope="row">2</th>
                             <td scope="col"><img   src="https://nodeserver.mydevfactory.com:3305/serviceIcon/1628339777452plumbing1.jpg" alt=""> </td>
                             <td colspan="">Plumbing</td>
@@ -83,17 +86,19 @@
                             <td colspan="">Plumbing</td>
                             <td colspan="">This is a very good service</td>
                             <td><span class="Active">Active</span></td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                     </div>
-                    
+
                   </div>
                   <div class="tab-pane fade" id="Pincode" role="tabpanel" aria-labelledby="Pincode-tab">
                     <h1>
                       Available  zip code
                     </h1>
-                    <p><strong>Zip code : -</strong> 877412, 877415, 877418, 877420, 877425 </p>
+                    <p><strong>Zip code : -</strong>
+                      <span *ngFor="let item of getDataService?.zipCode ; let i=index">{{item}} {{getDataService?.zipCode?.length > i+1 ? ',': ''}} </span>
+                       </p>
                   </div>
                 </div>
             </div>

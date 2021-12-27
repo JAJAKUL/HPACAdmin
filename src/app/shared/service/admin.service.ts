@@ -56,6 +56,11 @@ export class AdminService implements OnInit {
     }
     headerToken() {
       const token1 = JSON.parse(localStorage.getItem('token'));
+      if(!token1){
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
+      console.log('token1====================', token1)
       const httpOptions: any = {
         headers: new HttpHeaders({
           'authorization': 'Bearer ' + token1,
@@ -211,77 +216,6 @@ export class AdminService implements OnInit {
 
 
 
-    UserListData(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/get-user-list`;
-        console.log(API_URL)
-        return this.httpClient.post(API_URL, data, this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
-
-    addUser(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/add-user`;
-        return this.httpClient.post(API_URL, data, this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
-
-
-    userDetails(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/get-user-profile`;
-        return this.httpClient.post(API_URL, data, this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
-    editUser(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/edit-user`;
-        return this.httpClient.post(API_URL, data, this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
-    deleteUser(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/delete-user`;
-        return this.httpClient.post(API_URL, data, this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
-
-    DeleteMultipleUsers(data): Observable<any> {
-        const API_URL = `${this.apiUrl}/delete-multiple-category`;
-        return this.httpClient.post(API_URL, data,this.headerToken())
-        .pipe(
-            map(res => {
-                return res;
-            }),
-            retry(1),
-            catchError(this.error)
-            );
-    }
 
 /* add new service */
 
@@ -1181,11 +1115,11 @@ DeleteMultipleSpecialities(data): Observable<any> {
  ***************************/
 
 /***************************
- * Call realtors user apis *
+ * Call User user apis *
  ***************************/
 
-RealtorsListData(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_realtors_list`;
+UserListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get_user_list`;
   console.log(API_URL)
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
@@ -1197,8 +1131,8 @@ RealtorsListData(data): Observable<any> {
       );
 }
 
-AddRealtors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/register_realtors`;
+AddUser(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/register_user`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {
@@ -1209,8 +1143,8 @@ AddRealtors(data): Observable<any> {
       );
 }
 
-RealtorsDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_realtors`;
+UserDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_user`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {
@@ -1221,8 +1155,8 @@ RealtorsDetails(data): Observable<any> {
       );
 }
 
-EditRealtors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_realtors`;
+EditUser(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit_user`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {
@@ -1233,8 +1167,8 @@ EditRealtors(data): Observable<any> {
       );
 }
 
-DeleteRealtors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-realtors`;
+DeleteUser(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-user`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {
@@ -1245,8 +1179,8 @@ DeleteRealtors(data): Observable<any> {
       );
 }
 
-DeleteMultipleRealtors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-multiple-realtors`;
+DeleteMultipleUser(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-multiple-user`;
   return this.httpClient.post(API_URL, data,this.headerToken())
   .pipe(
       map(res => {
@@ -1258,7 +1192,7 @@ DeleteMultipleRealtors(data): Observable<any> {
 }
 
 /***************************
- * end realtors user apis *
+ * end User user apis *
  ***************************/
 
 /***************************
@@ -1451,6 +1385,18 @@ DeleteContractorsSubscription(data): Observable<any> {
       );
   }
 
+  ContractorsServiceDetails(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/contractors-service-details`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
 /*************************************
  * End Contractors Subscription APIs *
  *************************************/
@@ -1473,7 +1419,7 @@ DeleteContractorsSubscription(data): Observable<any> {
 }
 
 ContractorsDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_contractors_details`;
+  const API_URL = `${this.apiUrl}/get_user_details`;
   console.log(data)
   console.log(API_URL)
   return this.httpClient.post(API_URL, data, this.headerToken())
@@ -1571,7 +1517,7 @@ AddHomeInspect(data): Observable<any> {
 }
 
 HomeInspectDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_homeinspect_details`;
+  const API_URL = `${this.apiUrl}/get_user_details`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {
