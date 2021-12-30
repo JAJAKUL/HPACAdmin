@@ -1638,4 +1638,161 @@ DeleteMultipleService(data): Observable<any> {
  * end HomeInspect user apis *
  ***************************/
 
+/* start How it work service */
+AddHowItWork(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add-howit-work`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+GetHowItWorkListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-howit-work-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditHowItWork(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-howit-work`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+DeleteHowItWork(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/delete-howit-work`;
+  return this.httpClient.post(API_URL, data,this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+
+/* end Menus service */
+
+
+
+GetContactInfoListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-contact-info-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditContactInfo(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-contact-info`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+
+
+/* start How it work service */
+AddHomePageContent(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add-homepage-content`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+GetHomePageContentListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-homepage-content-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditHomePageContent(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-homepage-content`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+
+/* start How it work service */
+AddHomePageAboutUsBanner(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/add-homepage-aboutus-banner`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+  }
+
+GetHomePageAboutUsBannerListData(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/get-homepage-aboutus-banner-list`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+    map(res => {
+      return res;
+    }),
+    retry(1),
+    catchError(this.error)
+    );
+  }
+
+EditHomePageAboutUsBanner(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/edit-homepage-aboutus-banner`;
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+    }
+
+
+
 }

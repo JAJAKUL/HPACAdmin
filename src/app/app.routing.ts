@@ -213,6 +213,41 @@ export const routes: Routes = [
           title: 'Service'
         }
       },
+      {
+        path: 'how-it-work',
+        loadChildren: () => import('./how-it-work/how-it-work.module').then(m => m.HowItWorkModule),
+        data: {
+          title: 'How It Work'
+        }
+      },
+      {
+        path: 'contact-info',
+        loadChildren: () => import('./contact-info/contact-info.module').then(m => m.ContactInfoModule),
+        data: {
+          title: 'Contact Info'
+        }
+      },
+      {
+        path: 'home-page-content',
+        loadChildren: () => import('./home-page-content/home-page-content.module').then(m => m.HomePageContentModule),
+        data: {
+          title: 'Home Page Content'
+        }
+      },
+      {
+        path: 'home-aboutus-banner',
+        loadChildren: () => import('./home-about-us-banner/home-about-us-banner.module').then(m => m.HomeAboutUsBannerModule),
+        data: {
+          title: 'Home About Us Banner'
+        }
+      },
+      {
+        path: 'news-letter',
+        loadChildren: () => import('./news-letter/news-letter.module').then(m => m.NewsLetterModule),
+        data: {
+          title: 'Newsletter'
+        }
+      },
 
 
     ]

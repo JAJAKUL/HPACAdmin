@@ -57,6 +57,12 @@ export const navItems: INavData[] = [
 
   },
   {
+    name: 'Newsletter',
+    url: '/news-letter',
+    icon: 'icon-people',
+
+  },
+  {
     name: 'CMS ',
     url: '/pages',
     icon: 'icon-compass',
@@ -69,7 +75,27 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Contact Us',
-        url: '/page-underconstruction',
+        url: '/contact-us',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Home Page Content',
+        url: '/home-page-content',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Home AboutUs Banner',
+        url: '/home-aboutus-banner',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'Contact Info',
+        url: '/contact-info',
+        icon: 'icon-cursor'
+      },
+      {
+        name: 'How It Work',
+        url: '/how-it-work',
         icon: 'icon-cursor'
       },
       {

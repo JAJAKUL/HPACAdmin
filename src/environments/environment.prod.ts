@@ -4,6 +4,7 @@ export const environment = {
   endPoint: 'https://nodeserver.mydevfactory.com:3305/adminRouter',
   baseImageAdminProfile: 'https://nodeserver.mydevfactory.com:3305/adminProfile/',
   baseImageUserProfile: 'https://nodeserver.mydevfactory.com:3305/userProfile/',
+  baseImageHomeContentPage: 'https://nodeserver.mydevfactory.com:3305/homePageContent/',
   baseImageBuyersProfile: 'https://nodeserver.mydevfactory.com:3305/buyersProfile/',
   baseImageHomeInspectorProfile: 'https://nodeserver.mydevfactory.com:3305/homeInspectorsProfile/',
   baseImageContractorsProfile: 'https://nodeserver.mydevfactory.com:3305/contractorsProfile/',

@@ -64,6 +64,7 @@
     "sweetalert2": "^10.10.4",
     "ts-helpers": "^1.1.2",
     "tslib": "^2.2.0",
+    "underscore": "^1.13.2",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.3"
   },
