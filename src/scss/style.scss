@@ -16,3 +16,73 @@
   z-index: 99999 !important;
 
 }
+.dasboard-row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.dasboard-col{
+  width: 20%;
+  padding: 10px;
+}
+.d-card-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.d-card-item-body{
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  //min-height: 160px;
+  // align-items: center;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: flex-start;
+  text-align: left;
+  text-decoration: none;
+  height: 100%;
+}
+.d-card-item-body:hover{
+  text-decoration: none;
+  color: inherit;
+}
+.d-card-item-body .d-card-img{
+  font-size: 38px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.d-card-item-body .count-num{
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+}
+.d-card-item-body p{
+  font-weight: 400;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 0;
+}
+@media (max-width: 1200px) {
+  .dasboard-col{
+    width: 25%;
+  }
+}
+@media (max-width: 991px) {
+  .dasboard-col{
+    width: 33.3333%;
+  }
+}
+@media (max-width: 767px) { 
+  .dasboard-col{
+    width: 50%;
+  }
+}
+@media (max-width: 480px) { 
+  .dasboard-col{
+    width: 100%;
+  }
+}
