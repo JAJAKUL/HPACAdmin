@@ -63,6 +63,11 @@ export const navItems: INavData[] = [
 
   },
   {
+    name: 'Contact Us',
+    url: '/contact-us',
+    icon: 'icon-cursor'
+  },
+  {
     name: 'CMS ',
     url: '/pages',
     icon: 'icon-compass',
@@ -74,17 +79,12 @@ export const navItems: INavData[] = [
         icon: 'icon-speech'
       },
       {
-        name: 'Contact Us',
-        url: '/contact-us',
-        icon: 'icon-cursor'
-      },
-      {
-        name: 'Home Page Content',
+        name: 'Home Page Banner',
         url: '/home-page-content',
         icon: 'icon-cursor'
       },
       {
-        name: 'Home AboutUs Banner',
+        name: 'Home AboutUs Section',
         url: '/home-aboutus-banner',
         icon: 'icon-cursor'
       },

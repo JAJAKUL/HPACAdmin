@@ -100,7 +100,7 @@ export class ManageContractorsComponent implements OnInit {
     // formData.append('lat', this.lat);
     // formData.append('lng', this.lng);
 
-    this.adminService.AddContractors(formData).subscribe(
+    this.adminService.AddUser(formData).subscribe(
       (data) => {
         console.log(data);
         if (data.code === 201) {

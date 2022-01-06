@@ -1195,86 +1195,6 @@ DeleteMultipleUser(data): Observable<any> {
  * end User user apis *
  ***************************/
 
-/***************************
- * Call Buyers user apis *
- ***************************/
-
-BuyersListData(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_buyers_list`;
-  console.log(API_URL)
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-AddBuyers(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/register_buyers`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-BuyersDetails(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_buyers`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-EditBuyers(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_buyers`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteBuyers(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-buyers`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteMultipleBuyers(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-multiple-buyers`;
-  return this.httpClient.post(API_URL, data,this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-/***************************
- * end Buyers user apis *
- ***************************/
 
 
 /*************************************
@@ -1405,19 +1325,6 @@ DeleteContractorsSubscription(data): Observable<any> {
  * Call Contractors user apis *
  ***************************/
 
- ContractorsListData(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_contractors_list`;
-  console.log(API_URL)
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
 ContractorsDetails(data): Observable<any> {
   const API_URL = `${this.apiUrl}/get_user_details`;
   console.log(data)
@@ -1432,55 +1339,7 @@ ContractorsDetails(data): Observable<any> {
       );
 }
 
-AddContractors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/register_contractors`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
 
-
-
-EditContractors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_contractors`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteContractors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-contractors`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteMultipleContractors(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-multiple-contractors`;
-  return this.httpClient.post(API_URL, data,this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
 
 /***************************
  * end Contractors user apis *
@@ -1490,71 +1349,9 @@ DeleteMultipleContractors(data): Observable<any> {
  * Call HomeInspect user apis *
  ***************************/
 
- HomeInspectListData(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/get_homeinspect_list`;
-  console.log(API_URL)
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-
-AddHomeInspect(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/register_homeinspect`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
 HomeInspectDetails(data): Observable<any> {
   const API_URL = `${this.apiUrl}/get_user_details`;
   return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-EditHomeInspect(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/edit_homeinspect`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteHomeInspect(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-homeinspect`;
-  return this.httpClient.post(API_URL, data, this.headerToken())
-  .pipe(
-      map(res => {
-          return res;
-      }),
-      retry(1),
-      catchError(this.error)
-      );
-}
-
-DeleteMultipleHomeInspect(data): Observable<any> {
-  const API_URL = `${this.apiUrl}/delete-multiple-homeinspect`;
-  return this.httpClient.post(API_URL, data,this.headerToken())
   .pipe(
       map(res => {
           return res;
@@ -1575,6 +1372,18 @@ DeleteMultipleHomeInspect(data): Observable<any> {
  ServiceListData(data): Observable<any> {
   const API_URL = `${this.apiUrl}/get_service_list`;
   console.log(API_URL)
+  return this.httpClient.post(API_URL, data, this.headerToken())
+  .pipe(
+      map(res => {
+          return res;
+      }),
+      retry(1),
+      catchError(this.error)
+      );
+}
+
+IsFavoriteService(data): Observable<any> {
+  const API_URL = `${this.apiUrl}/is-Favorite-service`;
   return this.httpClient.post(API_URL, data, this.headerToken())
   .pipe(
       map(res => {

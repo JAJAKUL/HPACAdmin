@@ -25,6 +25,7 @@ export class ManageServiceComponent implements OnInit {
     "icon",
     "header",
     "description",
+    "isFavorite",
     "status",
     "action",
   ];
@@ -315,6 +316,46 @@ async  openEditModal(data){
           this.toastr.success("Status change successfully", "Success");
           this.getAllDataList();
         }
+      },
+   (err) => {
+        console.log(err);
+        var msg= err.message.message
+        if (err.status >= 404) {
+          console.log("Some error occured",err);
+          this.toastr.error(msg, "Error");
+        } else {
+
+          this.toastr.error(msg, "Error");
+          console.log("Internet Connection Error",err);
+        }
+      }
+    );
+  }
+
+  changeIsFavorite(data) {
+    var status: boolean
+    if(data.isFavorite){
+      status = false
+    }else{
+      status = true
+    }
+    let obj = {
+      _id: data._id,
+      isFavorite: status,
+    };
+      console.log('reqbody==================', obj)
+
+    this.adminService.IsFavoriteService(obj).subscribe(
+      (data) => {
+        console.log(data);
+        if (data.success) {
+
+          this.toastr.success(data.message, "Success");
+        }else{
+          this.toastr.warning(data.message, "Warning");
+
+        }
+        this.getAllDataList();
       },
    (err) => {
         console.log(err);
